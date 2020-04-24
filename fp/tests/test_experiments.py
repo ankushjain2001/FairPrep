@@ -4,10 +4,6 @@ import pickle
 from pandas import read_csv
 from datetime import datetime
 #from freezegun import freeze_time
-# print(os.getcwd())
-# os.chdir('../..')
-# print(os.getcwd())
-# print(os.listdir('fp'))
 from fp.traindata_samplers import CompleteData
 from fp.missingvalue_handlers import CompleteCaseAnalysis
 from fp.scalers import NoScaler
@@ -62,7 +58,6 @@ class testSuiteExperiments(unittest.TestCase):
         self.data = read_csv('fp/tests/resource/input/data.csv')
         self.annotated_train_data = pickle.load(open('fp/tests/resource/input/data_annotated.obj', 'rb'))
     
-    # Test 01 - Validate __init__
     def test_constructor(self):
         self.assertEqual(self.experiment.fixed_random_seed, 0xbeef)
         self.assertEqual(self.experiment.test_set_ratio, 0.2)
@@ -76,7 +71,6 @@ class testSuiteExperiments(unittest.TestCase):
                                                                     'investment_as_income_percentage', 'other_debtors',
                                                                     'property', 'installment_plans', 'housing',
                                                                     'skill_level', 'telephone', 'foreign_worker'])
-    '''
         self.assertEqual(type(self.experiment.train_data_sampler), CompleteData)
         self.assertEqual(type(self.experiment.missing_value_handler), CompleteCaseAnalysis)
         self.assertEqual(type(self.experiment.numeric_attribute_scaler), NoScaler)
@@ -96,8 +90,7 @@ class testSuiteExperiments(unittest.TestCase):
                                                             })
         self.assertEqual(self.experiment.dataset_name, 'test_dataset')
         self.assertEqual(self.experiment.log_path, 'logs/')
-        self.assertEqual(self.experiment.exec_timestamp, datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3])
-    '''
+        #self.assertEqual(self.experiment.exec_timestamp, datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3])
 
 
 if __name__ == '__main__':
