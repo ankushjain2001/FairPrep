@@ -1,9 +1,6 @@
-import os
 import unittest
 import pickle
-import time
 from pandas import read_csv
-from datetime import datetime
 from fp.traindata_samplers import CompleteData
 from fp.missingvalue_handlers import CompleteCaseAnalysis
 from fp.scalers import NoScaler
@@ -12,7 +9,7 @@ from fp.pre_processors import NoPreProcessing
 from fp.post_processors import NoPostProcessing
 from fp.experiments import BinaryClassificationExperiment
 
-@unittest.mock.patch('fp.experiments.time', unittest.mock.MagicMock(return_value=datetime(2020, 1, 1, 0, 0, 0, 000000).timestamp()))
+@unittest.mock.patch.object(BinaryClassificationExperiment, 'generate_timestamp', lambda x: '2020-01-01_00-00-00-000')
 class testSuiteExperiments(unittest.TestCase):
     
     def setUp(self):
@@ -106,3 +103,4 @@ class testSuiteExperiments(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    
