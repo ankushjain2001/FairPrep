@@ -9,9 +9,9 @@ from fp.pre_processors import NoPreProcessing
 from fp.post_processors import NoPostProcessing
 from fp.experiments import BinaryClassificationExperiment
 
-@unittest.mock.patch.object(BinaryClassificationExperiment, 'generate_timestamp', lambda x: '2020-01-01_00-00-00-000')
 class testSuiteExperiments(unittest.TestCase):
     
+    @unittest.mock.patch.object(BinaryClassificationExperiment, 'generate_timestamp', lambda x: '2020-01-01_00-00-00-000')
     def setUp(self):
         # User defined arguments
         fixed_random_seed = 0xbeef
@@ -98,8 +98,8 @@ class testSuiteExperiments(unittest.TestCase):
             'test_dataset__DecisionTree-notuning__complete_case__complete_data__no_scaler__no_pre_processing__no_post_processing')
 
     def test_generate_file_path(self):
-        self.assertEqual(self.experiment.generate_file_path(''), 'fp/logs/2020-01-01_00-00-00-000_test_dataset/')
-        self.assertEqual(self.experiment.generate_file_path('test.csv'), 'fp/logs/2020-01-01_00-00-00-000_test_dataset/test.csv')
+        self.assertEqual(self.experiment.generate_file_path(''), 'logs/2020-01-01_00-00-00-000_test_dataset/')
+        self.assertEqual(self.experiment.generate_file_path('test.csv'), 'logs/2020-01-01_00-00-00-000_test_dataset/test.csv')
 
 if __name__ == '__main__':
     unittest.main()
