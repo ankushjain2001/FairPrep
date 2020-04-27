@@ -1,8 +1,8 @@
 import os
 import numpy as np
 import pandas as pd
-import time
 
+from time import time
 from pathlib import Path
 from datetime import datetime
 from aif360.datasets import StandardDataset
@@ -58,7 +58,7 @@ class BinaryClassificationExperiment:
         self.dataset_metadata = dataset_metadata
         self.dataset_name = dataset_name
         self.log_path = 'logs/'
-        self.exec_timestamp = datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3]
+        self.exec_timestamp = datetime.fromtimestamp(time()).strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3]
 
 
     # --- Helper Methods Begin ------------------------------------------------
