@@ -2,7 +2,6 @@ import os
 import pickle
 import unittest
 from datetime import datetime
-
 from fp.traindata_samplers import CompleteData, BalancedExamplesSampler
 from fp.missingvalue_handlers import CompleteCaseAnalysis, ModeImputer, DataWigSimpleImputer
 from fp.scalers import NoScaler, NamedStandardScaler, NamedMinMaxScaler
