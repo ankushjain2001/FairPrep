@@ -10,7 +10,6 @@ from fp.post_processors import NoPostProcessing, RejectOptionPostProcessing, Equ
 from fp.pre_processors import NoPreProcessing, Reweighing, DIRemover, LFR
 from fp.experiments import BinaryClassificationExperiment
 
-@freeze_time('2020-01-01 00:00:00.000000')
 class test_pre_check(unittest.TestCase):
     def test_unittest(self):
         num1 = 3
