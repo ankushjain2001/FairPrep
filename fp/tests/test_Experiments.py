@@ -11,7 +11,7 @@ from fp.experiments import BinaryClassificationExperiment
 
 class testSuiteExperiments(unittest.TestCase):
     
-    @unittest.mock.patch.object(BinaryClassificationExperiment, 'generate_timestamp', lambda x: '2020-01-01_00-00-00-000')
+    @unittest.mock.patch.object(BinaryClassificationExperiment, 'generate_timestamp', unittest.mock.MagicMock(return_value='2020-01-01_00-00-00-000'))
     def setUp(self):
         # User defined arguments
         fixed_random_seed = 0xbeef
