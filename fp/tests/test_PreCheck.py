@@ -2,7 +2,6 @@ import os
 import pickle
 import unittest
 from datetime import datetime
-from freezegun import freeze_time
 
 from fp.traindata_samplers import CompleteData, BalancedExamplesSampler
 from fp.missingvalue_handlers import CompleteCaseAnalysis, ModeImputer, DataWigSimpleImputer
@@ -18,9 +17,6 @@ class test_pre_check(unittest.TestCase):
         num1 = 3
         num2 = 10
         self.assertEqual(num1+num2, 13)
-
-    def test_freezegun(self):
-        self.assertEqual(datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3], '2020-01-01_00-00-00-000')
         
 if __name__ == '__main__':
     unittest.main()
