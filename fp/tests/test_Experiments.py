@@ -1,6 +1,7 @@
 import unittest
 import pickle
 from pandas import read_csv
+
 from fp.traindata_samplers import CompleteData
 from fp.missingvalue_handlers import CompleteCaseAnalysis
 from fp.scalers import NoScaler

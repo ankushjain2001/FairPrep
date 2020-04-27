@@ -65,10 +65,6 @@ class BinaryClassificationExperiment:
     # --- Helper Methods Begin ------------------------------------------------
 
 
-    def generate_timestamp(self):
-        return datetime.fromtimestamp(time()).strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3]
-    
-
     def unique_file_name(self, learner, pre_processor, post_processor):
         return '{}__{}__{}__{}__{}__{}__{}'.format(self.dataset_name,
                                                    learner.name(),
@@ -82,6 +78,10 @@ class BinaryClassificationExperiment:
     def generate_file_path(self, file_name=''):
         dir_name = '{}_{}/'.format(self.exec_timestamp, self.dataset_name)
         return self.log_path + dir_name + file_name
+
+
+    def generate_timestamp(self):
+        return datetime.fromtimestamp(time()).strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3]
 
 
     def load_raw_data(self):
