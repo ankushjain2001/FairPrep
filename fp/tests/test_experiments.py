@@ -3,7 +3,6 @@ import unittest
 import pickle
 from pandas import read_csv
 from datetime import datetime
-#from freezegun import freeze_time
 from fp.traindata_samplers import CompleteData
 from fp.missingvalue_handlers import CompleteCaseAnalysis
 from fp.scalers import NoScaler
@@ -12,10 +11,7 @@ from fp.pre_processors import NoPreProcessing
 from fp.post_processors import NoPostProcessing
 from fp.experiments import BinaryClassificationExperiment
 
-
-#@freeze_time('2020-01-01 00:00:00.000000')
 class testSuiteExperiments(unittest.TestCase):
-    
     
     def setUp(self):
         # User defined arguments
@@ -27,7 +23,7 @@ class testSuiteExperiments(unittest.TestCase):
         pre_processors = [NoPreProcessing()]
         post_processors = [NoPostProcessing()]
         
-        # Fixed arguments
+        # Fixed arguments for dataset
         test_set_ratio = 0.2
         validation_set_ratio = 0.1
         label_name = 'credit'
@@ -47,7 +43,7 @@ class testSuiteExperiments(unittest.TestCase):
                             }
         dataset_name = 'test_dataset'
         
-        # Calling the parameterized constructor
+        # Constructor call
         self.experiment = BinaryClassificationExperiment(fixed_random_seed, test_set_ratio, validation_set_ratio,
                                                          label_name, positive_label, numeric_attribute_names,
                                                          categorical_attribute_names, attributes_to_drop_names,
@@ -90,8 +86,21 @@ class testSuiteExperiments(unittest.TestCase):
                                                             })
         self.assertEqual(self.experiment.dataset_name, 'test_dataset')
         self.assertEqual(self.experiment.log_path, 'logs/')
-        #self.assertEqual(self.experiment.exec_timestamp, datetime.now().strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3])
+        self.assertEqual(self.experiment.exec_timestamp, self.experiment.exec_timestamp)
 
+    def test_unique_file_name(self):
+        self.assertEqual(self.experiment.unique_file_name(self.experiment.learners[0], 
+                                                         self.experiment.pre_processors[0], 
+                                                         self.experiment.post_processors[0]),
+            'test_dataset__LogisticRegression-notuning__complete_case__complete_data__no_scaler__no_pre_processing__no_post_processing')
+        self.assertEqual(self.experiment.unique_file_name(self.experiment.learners[1], 
+                                                         self.experiment.pre_processors[0], 
+                                                         self.experiment.post_processors[0]),
+            'test_dataset__DecisionTree-notuning__complete_case__complete_data__no_scaler__no_pre_processing__no_post_processing')
+
+    def test_generate_file_path(self):
+        self.assertEqual(self.experiment.generate_file_path(''), 'fp/logs/2020-01-01_00-00-00-000_test_dataset/')
+        self.assertEqual(self.experiment.generate_file_path('test.csv'), 'fp/logs/2020-01-01_00-00-00-000_test_dataset/test.csv')
 
 if __name__ == '__main__':
     unittest.main()
