@@ -10,13 +10,13 @@ from fp.scalers import NoScaler
 from fp.learners import NonTunedLogisticRegression, NonTunedDecisionTree
 from fp.pre_processors import NoPreProcessing
 from fp.post_processors import NoPostProcessing
-from fp.experiments import BinaryClassificationExperiment
 
-@unittest.mock.patch('BinaryClassificationExperiment.time.time', unittest.mock.MagicMock(return_value=datetime(2020, 1, 1, 0, 0, 0, 000000).timestamp()))
+@unittest.mock.patch('fp.experiments.time.time', unittest.mock.MagicMock(return_value=datetime(2020, 1, 1, 0, 0, 0, 000000).timestamp()))
 class testSuiteExperiments(unittest.TestCase):
     
     def setUp(self):
         # User defined arguments
+        from fp.experiments import BinaryClassificationExperiment
         fixed_random_seed = 0xbeef
         train_data_sampler = CompleteData()
         missing_value_handler = CompleteCaseAnalysis()
