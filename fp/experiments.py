@@ -58,11 +58,16 @@ class BinaryClassificationExperiment:
         self.dataset_metadata = dataset_metadata
         self.dataset_name = dataset_name
         self.log_path = 'logs/'
-        self.exec_timestamp = datetime.fromtimestamp(time()).strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3]
+        self.exec_timestamp = self.generate_timestamp()
+
 
 
     # --- Helper Methods Begin ------------------------------------------------
 
+
+    def generate_timestamp(self):
+        return datetime.fromtimestamp(time()).strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3]
+    
 
     def unique_file_name(self, learner, pre_processor, post_processor):
         return '{}__{}__{}__{}__{}__{}__{}'.format(self.dataset_name,
