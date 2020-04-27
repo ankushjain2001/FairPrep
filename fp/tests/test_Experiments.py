@@ -10,11 +10,11 @@ from fp.scalers import NoScaler
 from fp.learners import NonTunedLogisticRegression, NonTunedDecisionTree
 from fp.pre_processors import NoPreProcessing
 from fp.post_processors import NoPostProcessing
-from fp.experiments import BinaryClassificationExperiment
+
 
 @unittest.mock.patch('fp.experiments.time.time', unittest.mock.MagicMock(return_value=datetime(2020, 1, 1, 0, 0, 0, 000000).timestamp()))
 class testSuiteExperiments(unittest.TestCase):
-    
+    from fp.experiments import BinaryClassificationExperiment
     def setUp(self):
         # User defined arguments
         fixed_random_seed = 0xbeef
