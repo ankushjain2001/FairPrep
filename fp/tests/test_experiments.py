@@ -1,6 +1,7 @@
 import os
 import unittest
 import pickle
+import time
 from pandas import read_csv
 from datetime import datetime
 from fp.traindata_samplers import CompleteData
@@ -11,6 +12,7 @@ from fp.pre_processors import NoPreProcessing
 from fp.post_processors import NoPostProcessing
 from fp.experiments import BinaryClassificationExperiment
 
+@unittest.mock.patch('time.time', unittest.mock.MagicMock(return_value=datetime(2020, 1, 1, 0, 0, 0, 000000).timestamp()))
 class testSuiteExperiments(unittest.TestCase):
     
     def setUp(self):
@@ -86,7 +88,7 @@ class testSuiteExperiments(unittest.TestCase):
                                                             })
         self.assertEqual(self.experiment.dataset_name, 'test_dataset')
         self.assertEqual(self.experiment.log_path, 'logs/')
-        self.assertEqual(self.experiment.exec_timestamp, self.experiment.exec_timestamp)
+        self.assertEqual(self.experiment.exec_timestamp, '2020-01-01_00-00-00-000')
 
     def test_unique_file_name(self):
         self.assertEqual(self.experiment.unique_file_name(self.experiment.learners[0], 
