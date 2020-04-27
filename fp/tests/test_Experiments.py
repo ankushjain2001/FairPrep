@@ -12,7 +12,7 @@ from fp.pre_processors import NoPreProcessing
 from fp.post_processors import NoPostProcessing
 from fp.experiments import BinaryClassificationExperiment
 
-@unittest.mock.patch('time.time', unittest.mock.MagicMock(return_value=datetime(2020, 1, 1, 0, 0, 0, 000000).timestamp()))
+@unittest.mock.patch('fp.experiments.time.time', unittest.mock.MagicMock(return_value=datetime(2020, 1, 1, 0, 0, 0, 000000).timestamp()))
 class testSuiteExperiments(unittest.TestCase):
     
     def setUp(self):
