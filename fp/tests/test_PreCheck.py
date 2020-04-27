@@ -1,8 +1,7 @@
-import os
-import pickle
 import unittest
-import time
+from time import time
 from datetime import datetime
+
 from fp.traindata_samplers import CompleteData, BalancedExamplesSampler
 from fp.missingvalue_handlers import CompleteCaseAnalysis, ModeImputer, DataWigSimpleImputer
 from fp.scalers import NoScaler, NamedStandardScaler, NamedMinMaxScaler
@@ -18,8 +17,8 @@ class test_pre_check(unittest.TestCase):
         num2 = 10
         self.assertEqual(num1+num2, 13)
         
-    def test_timestamp_mocking(self):
-        self.assertEqual(datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3], '2020-01-01_00-00-00-000')
+    def test_mock_timestamp(self):
+        self.assertEqual(datetime.fromtimestamp(time()).strftime('%Y-%m-%d_%H-%M-%S-%f')[:-3], '2020-01-01_00-00-00-000')
         
 if __name__ == '__main__':
     unittest.main()
