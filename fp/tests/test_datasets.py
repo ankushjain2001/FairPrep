@@ -15,7 +15,6 @@ class TestSuiteDatasets(unittest.TestCase):
     
     def test_AdultDatasetWhiteMaleExperiment(self):
         os.mkdir('llllkjhhg')
-        os.mkdir('logs')
         print(os.listdir())
         print(os.listdir('fp'))
         print(os.listdir('fp/tests'))
