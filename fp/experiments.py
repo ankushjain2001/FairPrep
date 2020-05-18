@@ -265,7 +265,11 @@ class BinaryClassificationExperiment:
         
         results_dir_name = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../{}'.format(self.generate_file_path()))
         if not os.path.exists(results_dir_name):
+            print('llllkjhhg3')
             os.makedirs(results_dir_name)
+            os.listdir(results_dir_name)
+            os.listdir(results_dir_name+'../')
+            print('llllkjhhg3')
         
         results_file = []
         
