@@ -16,6 +16,8 @@ class TestSuiteDatasets(unittest.TestCase):
     def test_AdultDatasetWhiteMaleExperiment(self):
         os.mkdir('llllkjhhg')
         print(os.listdir())
+        print(os.listdir('fp'))
+        print(os.listdir('fp/tests'))
         self.experiment = AdultDatasetWhiteMaleExperiment(
             fixed_random_seed = 0xabcd,
             train_data_sampler = CompleteData(),
