@@ -313,7 +313,7 @@ class BinaryClassificationExperiment:
 
         # Removing the test results from the non optimal experiment results      
         for file_name in non_optimal_filenames:
-            file_path = self.generate_file_path(file_name)
+            file_path = os.path.join(results_dir_name, result_filename)
             result_df = pd.read_csv(file_path)
             result_df = result_df[(result_df['Split'] != 'test')]
             os.remove(file_path)
@@ -321,7 +321,7 @@ class BinaryClassificationExperiment:
 
         # Renaming the optimal experiment results file (or files if tie) 
         for file_name in optimal_filenames:
-            file_path = self.generate_file_path(file_name)
+            file_path = os.path.join(results_dir_name, result_filename)
             optimal_file_name = file_name[:-4] + '__OPTIMAL.csv'
             optimal_file_path = self.generate_file_path(optimal_file_name)
             os.rename(file_path, optimal_file_path)
