@@ -321,9 +321,9 @@ class BinaryClassificationExperiment:
 
         # Renaming the optimal experiment results file (or files if tie) 
         for file_name in optimal_filenames:
-            file_path = os.path.join(results_dir_name, result_filename)
-            optimal_file_name = file_name[:-4] + '__OPTIMAL.csv'
-            optimal_file_path = self.generate_file_path(optimal_file_name)
+            file_path = os.path.join(results_dir_name, file_name)
+            optimal_file_name = '{}{}'.format(file_name[:-4], '__OPTIMAL.csv')
+            optimal_file_path = os.path.join(results_dir_name, optimal_file_name)
             os.rename(file_path, optimal_file_path)
 
 
