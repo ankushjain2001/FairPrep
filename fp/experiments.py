@@ -285,14 +285,14 @@ class BinaryClassificationExperiment:
             result. Keeps the test metrics just for the experiment(s) with the
             optimal result.
         """
-        
-        results_dir = os.listdir(Path(self.generate_file_path()))
+        results_dir_name = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../{}'.format(self.generate_file_path()))
+        results_dir = os.listdir(Path(results_dir_name))
         accuracies = dict()
         max_accuracy = 0
 
         # Fetching the accuracy from the row('val', 'None', 'accuracy') of all the experiment results
         for result_filename in results_dir:
-            file_path = self.generate_file_path(result_filename)
+            file_path = os.path.join(results_dir_name, result_filename)
             result_df = pd.read_csv(file_path)
             result_df.fillna(value='', inplace=True)
             accuracy = (result_df.loc[(result_df['Split'] == 'val') & 
