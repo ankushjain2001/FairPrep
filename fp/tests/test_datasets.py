@@ -1,4 +1,5 @@
 import unittest
+import os
 
 from fp.traindata_samplers import CompleteData
 from fp.missingvalue_handlers import CompleteCaseAnalysis
@@ -13,6 +14,8 @@ from fp.dataset_experiments import GiveMeSomeCreditExperiment
 class TestSuiteDatasets(unittest.TestCase):
     
     def test_AdultDatasetWhiteMaleExperiment(self):
+        os.mkdir('llllkjhhg')
+        print(os.listdir())
         self.experiment = AdultDatasetWhiteMaleExperiment(
             fixed_random_seed = 0xabcd,
             train_data_sampler = CompleteData(),
