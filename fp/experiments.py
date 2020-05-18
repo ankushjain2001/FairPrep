@@ -288,7 +288,7 @@ class BinaryClassificationExperiment:
         print('llllkjhhg2')
         print(os.listdir())
         print(os.listdir('fp'))
-        print(os.listdir('fp/test'))
+        print(os.listdir('fp/tests'))
         results_dir = os.listdir(Path(self.generate_file_path()))
         accuracies = dict()
         max_accuracy = 0
