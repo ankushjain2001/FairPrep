@@ -296,7 +296,7 @@ class BinaryClassificationExperiment:
         print(os.listdir('../'))
         print(os.listdir('fp'))
         print(os.listdir('fp/tests'))
-        results_dir = os.listdir(Path(self.generate_file_path()))
+        results_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../{}'.format(self.generate_file_path()))
         accuracies = dict()
         max_accuracy = 0
 
