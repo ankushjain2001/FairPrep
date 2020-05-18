@@ -285,7 +285,8 @@ class BinaryClassificationExperiment:
             result. Keeps the test metrics just for the experiment(s) with the
             optimal result.
         """
-        
+        print('llllkjhhg2')
+        print(os.listdir())
         results_dir = os.listdir(Path(self.generate_file_path()))
         accuracies = dict()
         max_accuracy = 0
